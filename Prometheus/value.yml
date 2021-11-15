@@ -108,7 +108,7 @@ alertmanager:
     ## Must be provided if Ingress is enabled
     ##
     hosts: 
-        - alertmanager.domain.com
+        - tcinc-monitoring-alertmanager.com
     #   - domain.com/alertmanager
 
     ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
@@ -164,7 +164,7 @@ alertmanager:
     ## If true, alertmanager will create/use a Persistent Volume Claim
     ## If false, use emptyDir
     ##
-    enabled: true
+    enabled: false
 
     ## alertmanager data Persistent Volume access modes
     ## Must match those of existing PV or dynamic provisioner
@@ -720,8 +720,7 @@ server:
     ## Must be provided if Ingress is enabled
     ##
     hosts:
-        - prometheus.domain.com
-    #   - domain.com/prometheus
+        - dev-teckstack-monitoring-prometheus.com
 
     ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
     extraPaths: []
@@ -736,7 +735,7 @@ server:
     tls: []
     #   - secretName: prometheus-server-tls
     #     hosts:
-    #       - prometheus.domain.com
+    #       - dev-teckstack-monitoring-prometheus.com
 
   ## Server Deployment Strategy type
   # strategy:
@@ -776,7 +775,7 @@ server:
     ## If true, Prometheus server will create/use a Persistent Volume Claim
     ## If false, use emptyDir
     ##
-    enabled: true
+    enabled: false
 
     ## Prometheus server data Persistent Volume access modes
     ## Must match those of existing PV or dynamic provisioner
@@ -824,7 +823,7 @@ server:
     subPath: ""
 
   emptyDir:
-    sizeLimit: ""
+    sizeLimit: "
 
   ## Annotations to be added to Prometheus server pods
   ##
@@ -1140,18 +1139,18 @@ pushgateway:
 
 ## alertmanager ConfigMap entries
 ##
-alertmanagerFiles:
-  alertmanager.yml:
-    global:
-      smtp_from: xxx@gmail.com
-      smtp_smarthost: smtp.gmail.com:587
-      smtp_auth_username: xxx@gmail.com
-      smtp_auth_password: *****
-      smtp_require_tls: true
-    receivers:
-      - name: default-receiver
-        email_configs:
-        - to: 'xxxxx@gmail.com'
+#alertmanagerFiles:
+ # alertmanager.yml:
+  #  global:
+   #   smtp_from: xxx@gmail.com
+    #  smtp_smarthost: smtp.gmail.com:587
+     # smtp_auth_username: xxx@gmail.com
+      #smtp_auth_password: *****
+      #smtp_require_tls: true
+  #  receivers:
+  #   - name: default-receiver
+  #      email_configs:
+  #      - to: 'xxxxx@gmail.com'
     route:
       group_by: ['node']
       group_wait: 10s
